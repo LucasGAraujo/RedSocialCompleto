@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RedeSocial.Domain.Entities.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pesquisa</h1>
+
+<form asp-controller="Posts" asp-action="Index" />
+<p>
+    Pesquise o post pelo nome do perfil : <input type="text" name="search" />
+    <input type="submit" value="Pesquisar" />
+</p>
+<a asp-action="ListarPost">Voltar Feed</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    <img src="@item.Foto" style="max-width:180px" ; heigth: auto" />
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

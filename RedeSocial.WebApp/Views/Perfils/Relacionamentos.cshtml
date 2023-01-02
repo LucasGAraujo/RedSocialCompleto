@@ -1,0 +1,38 @@
+﻿@model RedeSocial.Domain.Entities.Perfil
+@{
+    ViewData["Title"] = "Relacionamento";
+}
+
+<h1>Relacionamentos</h1>
+   <a asp-controller="Relacionamentos" asp-action="Create">Criar Relacionamentos</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RelacionamentosB)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Nome)
+            </td>
+            <td>
+                @foreach (var amigo in Model.RelacionamentosB)
+                {
+                    <span>
+                        @Html.DisplayFor(modelItem => amigo.PerfilB.Nome) |
+                    </span>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index">Voltar para Perfil</a>
+</div>

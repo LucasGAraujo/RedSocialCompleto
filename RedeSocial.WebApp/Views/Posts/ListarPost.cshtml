@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RedeSocial.Domain.Entities.Post>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Feed De Postagens</h1>
+
+<p>
+    <a asp-action="Create">Criar Postagem</a> <br/> 
+    <a asp-action="Index">Pesquisar post por usuario</a> <br/>
+    <h4>Se você não tem perfil, crie abaixo:</h4>
+    <a  asp-controller="Perfils" asp-action="Create">Criar perfil</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.Foto" style="max-width:180px" ; heigth: auto" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comentario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar Postagem</a> |
+                    <a asp-action="Comentar" asp-route-id="@item.Id">Comentar Postagem</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Deletar Postagem</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
